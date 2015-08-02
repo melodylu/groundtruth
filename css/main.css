@@ -1,0 +1,27 @@
+.container {
+	padding: 100px;
+	margin: 0 auto;
+	font-family: sans-serif;
+	font-size: 20px;
+}
+
+.main {
+	padding: 20px;
+	border-radius: 10px;
+}
+
+.students-add {
+	background-color: rgba(111, 153, 142, 1);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+#suggestions {
+	background-color: rgba(134, 150, 153, .5);
+	padding: 20px;
+	border-radius: 10px;
+}
+
+
+/*	background-color: rgba(140, 127, 88, 1);
+*/
