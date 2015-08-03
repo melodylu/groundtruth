@@ -19,3 +19,23 @@ an app letting you know if there are earthquakes or dangerous weather near you, 
 Break up project into parts?
 * design
 * functions that do the queries to apies
+
+Project Components
+* Page design
+* Front-end jQuery event handling
+* Getting bootstrap to work
+* Polling API for weather information
+* Polling API for user location
+* Push notifications?
+*
+
+**What the design should accomplish:**
+* Where they are
+* Display useful stuff nearby
+* Peripheral weather / earthquake data
+* Static but situationally dependent box that loads other stuff if there's no information to field; educational content for disaster preparedness tips on a randomized
+
+**Monday's Plan**
+* Mel - get user's location and earthquake data
+* Ethan - get us a pretty map + weather data :)
+* Rachel - work on SPA design and bootstrap
