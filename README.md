@@ -1,6 +1,12 @@
 # GroundTruth
 an app letting you know if there are earthquakes or dangerous weather near you, and what you can do about it
 
+##User flow:
+* user lands on page. Are their earthquakes or dangerous weather nearby? (200miles)
+* user can now enter a new location, if they want to see what dangerous weather is nearby.
+* if there's nothing dangerous nearby, display a carasoul of dangerous weather survival tips
+
+
 
 ##Based on user’s lat/long:
 * what earthquakes are closest?
