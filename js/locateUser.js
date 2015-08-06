@@ -1,6 +1,9 @@
-// what this locateUser.js file does:
-// userLoc.geometry.coordinates[0]   longitude
-// userLoc.geometry.coordinates[1]   lattitude
+
+// once this script runs (and returns; remember there maybe a 2-4 second delay)
+// you will have access to: 
+// userLoc.geometry.coordinates[0]   <-- longitude, or y cord
+// userLoc.geometry.coordinates[1]   <-- lattitude, r x cord
+
 // Check to see if you can get a navigator.geolocation object
 //      display error if not
 //  if so:
