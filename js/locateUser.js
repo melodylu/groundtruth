@@ -10,14 +10,6 @@
 //          return a geojson userLoc object that the whole page can see and use
 
 
-// optional, I tried to implement it and did not see much improvement. Commented out.
-//          set a watchPosition(Wsuccess, Werror, Wparameters)
-//              success: 
-//                  update the global geojson object
-//                  is the coordinates accuracy the same as current?
-//                      if yes, end the watchPosition timer, we've got the best location possible.
-// 
-
 
 // more documentation:
 // http://geojson.org/geojson-spec.html
@@ -30,11 +22,7 @@
 
 // _____ global variables ______
 var userLoc = {}; // <-- once the user is located, you guys should use this variable to do stuff
-var refineLoc; // this will be used to run a second location check to get better accuracy
 
-$(document).ready(function() {
-    startLocating();
-});
 
 
 
@@ -76,10 +64,10 @@ function geoError(positionError) {
 
 
 var geoOptions = {
-    enableHighAccuracy: true, 
-    timeout: 9000, 
-    maximumAge: 0 
-    //https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
+    enableHighAccuracy: true,
+    timeout: 9000,
+    maximumAge: 0
+        //https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
 };
 
 
