@@ -1,21 +1,21 @@
-
 // what this locateUser.js file does:
-
+// userLoc.geometry.coordinates[0]   longitude
+// userLoc.geometry.coordinates[1]   lattitude
 // Check to see if you can get a navigator.geolocation object
-// 		display error if not
-// 	if so:
-// 	getCurrentLocation(success, error, parameters)
-// 		success:
-// 			log to console
-//			return a geojson userLoc object that the whole page can see and use
+//      display error if not
+//  if so:
+//  getCurrentLocation(success, error, parameters)
+//      success:
+//          log to console
+//          return a geojson userLoc object that the whole page can see and use
 
 
 // optional, I tried to implement it and did not see much improvement. Commented out.
-// 			set a watchPosition(Wsuccess, Werror, Wparameters)
-// 				success: 
-//					update the global geojson object
-//					is the coordinates accuracy the same as current?
-//			 			if yes, end the watchPosition timer, we've got the best location possible.
+//          set a watchPosition(Wsuccess, Werror, Wparameters)
+//              success: 
+//                  update the global geojson object
+//                  is the coordinates accuracy the same as current?
+//                      if yes, end the watchPosition timer, we've got the best location possible.
 // 
 
 
@@ -29,12 +29,12 @@
 
 
 // _____ global variables ______
-var userLoc = {};  // <-- once the user is located, you guys should use this variable to do stuff
-var refineLoc;	// this will be used to run a second location check to get better accuracy
+var userLoc = {}; // <-- once the user is located, you guys should use this variable to do stuff
+var refineLoc; // this will be used to run a second location check to get better accuracy
 
 $(document).ready(function() {
     startLocating();
-}); 
+});
 
 
 
@@ -50,21 +50,21 @@ function startLocating() {
 }
 
 
-// this function returns a geojson object and prints to console
+// this function returns a geojson object, prints to console, and starts up the renderMap function
 function geoSuccess(position) {
+
     // set global userLoc var to a geojson object everyone can use
     userLoc = geojsonThis(position);
 
-    var geoResultsText = '' + ' \nLatitude: ' + position.coords.latitude.toFixed(2) + ' \nLongitude: ' + position.coords.longitude.toFixed(2) + ' \nAccuracy: more or less ' + position.coords.accuracy + " meters";
+    var geoResultsText = 'userLoc.geometry.coordinates[0] Longitude: ' + position.coords.latitude.toFixed(2) + ' \nuserLoc.geometry.coordinates[1] Lattitude: ' + position.coords.longitude.toFixed(2) + ' \nAccuracy: more or less ' + position.coords.accuracy + " meters";
 
+    console.log('global var userLoc is now:');
     console.log(geoResultsText);
-    console.log('global var userLoc is now:  (a geojson object)');
+
     console.log(userLoc);
 
-    // TODO: the line below with refineLoc doesn't seem to improve accuracy, and leads to timeout problems. 
-    // Let's just make them wait and do the call once.
-    // refineLoc = navigator.geolocation.watchPosition(refineLocSuccess, refineLocError, refineLocOptions);
 
+    renderMap(userLoc.geometry.coordinates[0], userLoc.geometry.coordinates[1]);
     return geojsonThis(position);
 }
 
@@ -76,27 +76,12 @@ function geoError(positionError) {
 
 
 var geoOptions = {
-    enableHighAccuracy: true, // If true and if the device is able to provide a more accurate position, it will do so. Note that this can result in slower response times or increased power consumption (with a GPS chip on a mobile device for example). On the other hand, if false, the device can take the liberty to save resources by responding more quickly and/or using less power. Default: false.
-    timeout: 9000, // Is a positive long value representing the maximum length of time (in milliseconds) the device is allowed to take in order to return a position. The default value is Infinity, meaning that getCurrentPosition() won't return until the position is available.
-    maximumAge: 0 // If set to 0, it means that the device cannot use a cached position and must attempt to retrieve the real current position. 
-
+    enableHighAccuracy: true, 
+    timeout: 9000, 
+    maximumAge: 0 
     //https://developer.mozilla.org/en-US/docs/Web/API/PositionOptions
 };
 
-
-// function refineLocSuccess(betterPostion){
-// 	userLoc = geojsonThis(betterPosition);
-//     console.log('global var userLoc is now:  (a geojson object)');
-//     console.log(userLoc);
-// }
-// function refineLocError(positionError) {
-//     console.warn('Error(' + positionError.code + '): ' + positionError.message);
-// }
-// var refineLocOptions = {
-//     enableHighAccuracy: true,
-//     timeout: 15000, 
-//     maximumAge: 0 
-// };
 
 
 
@@ -119,4 +104,3 @@ function geojsonThis(thing) {
         }
     };
 }
-
