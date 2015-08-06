@@ -20,19 +20,10 @@
 
 <body>
     <div id="container">
-<!-- 
-        <form class="form-inline" method="post" id="geocoding_form">
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" />
-                <input type="submit" class="btn" value="Search" />
-            </div>
-        </form>
- -->
-
-            <div id="map"></div>
+        <div id="map"></div>
     </div>
     <script>
+
     // go get the earthquakes of the last day
     var todayQuake = {
         "type": "FeatureCollection",
@@ -6733,6 +6724,27 @@
         "bbox": [-178.5821, -27.2411, 0, 166.9859, 65.141, 577.21]
     };
 
+
+    $(document).ready(function() {
+
+        startLocating();
+        renderMap(0, 0);
+
+    });
+
+
+    // if default lat lng changes, center map on user location
+    function renderMap(myLon, myLat) {
+
+        map = new GMaps({
+            div: '#map',
+            lat: myLat,
+            lng: myLon
+        });
+
+    }
+
+    renderMap(0, 0);
     // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
 
     // get the users' location
@@ -6760,42 +6772,6 @@
     // serve up local earthquakes
     // rerender map function
     //
-
-
-
-
-    // if default lat lng changes, center map on user location
-    function renderMap(myLon, myLat) {
-
-        map = new GMaps({
-            div: '#map',
-            lat: myLat,
-            lng: myLon
-        });
-
-
-        // Address search bar code can be turned back on:
-
-        // $('#geocoding_form').submit(function(e) {
-        //     e.preventDefault();
-        //     GMaps.geocode({
-        //         address: $('#address').val().trim(),
-        //         callback: function(results, status) {
-        //             if (status == 'OK') {
-        //                 var latlng = results[0].geometry.location;
-        //                 map.setCenter(latlng.lat(), latlng.lng());
-        //                 map.addMarker({
-        //                     lat: latlng.lat(),
-        //                     lng: latlng.lng()
-        //                 });
-        //             }
-        //         }
-        //     });
-        // });
-
-    }
-
-    renderMap(0,0);
     </script>
 </body>
 

@@ -21,7 +21,22 @@
 
 
 // _____ global variables ______
-var userLoc = {}; // <-- once the user is located, you guys should use this variable to do stuff
+
+// once the user is located, you guys should use this variable to do stuff
+// these are default values
+var userLoc = {
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [103.82, 1.312] //Point coordinates are in x, y order (longitude, latitude)
+    },
+    "properties": {
+        "name": "user location",
+        "timestamp": 1438889096231, // when this info was aquired, in millisecond UTC
+        "accuracy": 21, // in meters
+        "originalGeopositionObj": null // the original geoposition object, in case it someday has more you want to use
+    }
+};
 
 
 
