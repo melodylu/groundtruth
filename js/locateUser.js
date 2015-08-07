@@ -37,8 +37,8 @@ var userLoc = {
         "originalGeopositionObj": null // the original geoposition object, in case it someday has more you want to use
     }
 };
-
-
+var localQuakes ={};
+var dist = 3000;
 
 
 
@@ -64,12 +64,10 @@ function geoSuccess(position) {
     console.log('global var userLoc is now:');
     console.log(geoResultsText);
 
-    console.log(userLoc);
-
 
     renderMap(userLoc.geometry.coordinates[0], userLoc.geometry.coordinates[1]);
     // just added 8/6/2015
-    var localQuakes = getLocalQuakes(todayQuake.features, 300);
+    getQuakes(userLoc, dist);
 
     return geojsonThis(position);
 }

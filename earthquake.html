@@ -159,16 +159,16 @@
         $.ajax({
             url: "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
             //"http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+            // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson
             success: function(fetchedQuakes) {
+                //console.log(fetchedQuakes);
                 todayQuake = fetchedQuakes.features;
                 console.log('todayQuake is...');
                 console.log(todayQuake);
-                var localQuakes = getLocalQuakes(todayQuake.features, dist);
-                getLocalQuakes(todayQuake.features, dist);
+                localQuakes = getLocalQuakes(todayQuake, dist);
             }
         });
     };
-
     // when we locateUs.js, we run this:     
     // var localQuakes = getLocalQuakes(todayQuake.features, 3000);
     </script>
