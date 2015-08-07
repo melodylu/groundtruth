@@ -69,7 +69,7 @@ function geoSuccess(position) {
 
     renderMap(userLoc.geometry.coordinates[0], userLoc.geometry.coordinates[1]);
     // just added 8/6/2015
-    getLocalQuakes(todayQuake.features, 300);
+    var localQuakes = getLocalQuakes(todayQuake.features, 300);
 
     return geojsonThis(position);
 }
