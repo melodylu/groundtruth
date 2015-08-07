@@ -157,7 +157,7 @@
 
     var getQuakes = function(userLoc, dist) {
         $.ajax({
-            url: "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+            url: "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson",
             //"http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
             // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson
             success: function(fetchedQuakes) {
