@@ -174,3 +174,6 @@ var getQuakes = function(userLoc, dist) {
 };
 // when we locateUs.js, we run this:     
 // var localQuakes = getLocalQuakes(todayQuake.features, 3000);
+
+
+
