@@ -125,9 +125,9 @@ function addMarker(coordinates, eventProp, type) {
 }
 
 function addThing(quake) {
-    var earthquakeString = "<p>Title: " + quake.properties.title + "</p>";
+    //var earthquakeString = "<p>Title: " + quake.properties.title + "</p>";
 
-    $("#container").append(earthquakeString);
+    //$("#container").append(earthquakeString);
 }
 
 function getLocalQuakes(largeQuakeSet, dist) {
